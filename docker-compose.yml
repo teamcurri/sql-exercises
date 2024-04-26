@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust # Allow any connection without username and password. Not recommended for production.
+      - POSTGRES_DB=curri-practice-db
+      - POSTGRES_USER=curri
+    volumes:
+      - ./postgres-init:/docker-entrypoint-initdb.d  # Mount SQL initialization scripts directory to container directory needed for initialization (docker-entrypoint-initdb.d)
+      - postgres-data:/var/lib/postgresql/data  # Persistent data volume
+volumes:
+  postgres-data:
