@@ -79,10 +79,18 @@ user=curri
 ### Step 4: Connecting to the Database and Writing Queries
 
 Connecting to the Database:
-<video tutorial here>
+
+
+https://github.com/teamcurri/sql-exercises/assets/62448274/619ff1d6-b701-4fc6-be07-e7dec3e7f66a
+
+
 
 Writing Queries:
-<video tutorial here>
+
+
+https://github.com/teamcurri/sql-exercises/assets/62448274/a29a4cfc-b216-4b55-98a4-859d8ee680d9
+
+
 
 
 ### Step 5: Complete the Exercises
