@@ -76,9 +76,16 @@ database=curri-practice-db
 user=curri
 ```
 
-Here is a video tutorial on how to connect to a PostgreSQL database using DBeaver:
+### Step 4: Connecting to the Database and Writing Queries
 
-### Step 4: Complete the Exercises
+Connecting to the Database:
+<video tutorial here>
+
+Writing Queries:
+<video tutorial here>
+
+
+### Step 5: Complete the Exercises
 
 Write out all of your SQL queries in a single file called `{first_name}_{last_name}_sql_exercise_submission.sql`. You can use DBeaver or another SQL client to write and execute/test your queries.
 
