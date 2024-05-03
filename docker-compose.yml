@@ -1,6 +1,7 @@
 services:
   postgres:
     image: postgres:latest
+    container_name: postgres
     ports:
       - "5432:5432"
     environment:
@@ -8,7 +9,23 @@ services:
       - POSTGRES_DB=curri-practice-db
       - POSTGRES_USER=curri
     volumes:
-      - ./postgres-init:/docker-entrypoint-initdb.d  # Mount SQL initialization scripts directory to container directory needed for initialization (docker-entrypoint-initdb.d)
       - postgres-data:/var/lib/postgresql/data  # Persistent data volume
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -q -d curri-practice-db -U curri"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+  
+  seed-db:
+    image: seed-db
+    container_name: seed-db
+    build:
+      dockerfile: Dockerfile
+    command: ["python3", "./db/seed.py"]  # Command to run your Python script
+    depends_on:
+      postgres:
+        condition: service_healthy  # Wait for the db service to be healthy
+    restart: on-failure  # Restart the seed-db service only if it exits with a non-zero status
+
 volumes:
   postgres-data:

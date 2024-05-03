@@ -53,7 +53,28 @@ Open your terminal and run the following command to clone the repository to your
 git clone https://github.com/teamcurri/sql-exercises.git
 ```
 
-### Step 2: Start the Database
+### Step 2: Make sure Docker is running
+Open Docker Desktop and make sure it is running. If it is not running, start it.
+
+To check if Docker is running, you can run the following command in your terminal:
+
+```bash
+docker info
+```
+
+You should see information about your Docker installation if it is running, something like this:
+
+```
+Client:
+ Version:    26.0.0
+ Context:    desktop-linux
+ Debug Mode: false
+ Plugins:
+  buildx: Docker Buildx (Docker Inc.)
+  ...
+```
+
+### Step 3: Start the Database
 Navigate to the repository directory (in the same terminal window)
 
 ```bash
@@ -66,7 +87,7 @@ Run the following command to start the database:
 docker-compose up -d
 ```
 
-### Step 3: Connect to the Database
+### Step 4: Connect to the Database
 Open DBeaver (or another SQL client of your choice) and connect to the database using the following credentials:
 
 ```bash
@@ -76,7 +97,7 @@ database=curri-practice-db
 user=curri
 ```
 
-### Step 4: Connecting to the Database and Writing Queries
+### Step 5: Connecting to the Database and Writing Queries
 
 Connecting to the Database:
 
@@ -93,15 +114,17 @@ https://github.com/teamcurri/sql-exercises/assets/62448274/a29a4cfc-b216-4b55-98
 
 
 
-### Step 5: Complete the Exercises
+### Step 6: Complete the Exercises
 
 Write out all of your SQL queries in a single file called `{first_name}_{last_name}_sql_exercise_submission.sql`. You can use DBeaver or another SQL client to write and execute/test your queries.
 
+Please make sure to include a semi-colon `;` at the end of each query.
+
 ## 🚀 Submission <a name = "submission"></a>
 
-To submit your solutions, send over the `{first_name}_{last_name}_sql_exercise_submission.sql` file as a DM in Slack to `@Nathan Jones`.
+To submit your solutions, send over the `{first_name}_{last_name}_sql_exercise_submission.sql` file as a DM in Slack to **@Nathan Jones**.
 
-If you have any questions or need help with the assignment, please reach out in the #summer-2024-data-internship channel on Slack.
+If you have any questions or need help with the assignment, please reach out in the `#summer-2024-data-internship` channel on Slack.
 
 Good luck! 🚀
 
@@ -111,11 +134,11 @@ Question 1. List all orders with their associated product names.
 
 Expected Output:
 
-| First Header | Second Header |
-| ------------ | ------------- |
-| Content Cell | Content Cell  |
-| Content Cell | Content Cell  |
-| ...          | ...           |
+| order_id     | ordered_at   | name | quantity | status |
+| ------------ | ------------ | ---- | -------- | ------ |
+| Content Cell | Content Cell |      |          |        |
+| Content Cell | Content Cell |      |          |        |
+| ...          | ...          |      |          |        |
 
 Question 2. Find the total number of orders for each user.
 

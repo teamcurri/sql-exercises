@@ -1,4 +1,6 @@
 # Custom
+graded_submissions/
+submissions/
 exercise_solutions.sql
 *.log
 ./.vscode
