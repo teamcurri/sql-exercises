@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "data-engineer-take-home-assignment"
+version = "0.1.0"
+description = "Utility package to generate seed data for practice SQL exercises"
+authors = ["natejones4323 <nathanjones4323@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+faker = "^25.0.0"
+pandas = "^2.2.2"
+psycopg2 = "^2.9.9"
+sqlalchemy = "^2.0.29"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

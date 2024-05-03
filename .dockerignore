@@ -1,5 +1,6 @@
 # Custom
 exercise_solutions.sql
+grade/
 # Standard
 __pycache__
 *.pyc
