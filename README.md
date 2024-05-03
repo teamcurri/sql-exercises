@@ -118,19 +118,37 @@ https://github.com/teamcurri/sql-exercises/assets/62448274/a29a4cfc-b216-4b55-98
 
 ### Step 6: Complete the Exercises
 
-Write out all of your SQL queries in a single file called `{first_name}_{last_name}_sql_exercise_submission.sql`. You can use DBeaver or another SQL client to write and execute/test your queries.
+For the coding exercises, write out all of your SQL queries in a single file called `{first_name}_{last_name}_sql_exercise_submission.sql`. You can use DBeaver or another SQL client to write and execute/test your queries.
 
 Please make sure to include a semi-colon `;` at the end of each query.
 
+For the short answer questions, write out your answers in a text file called `{first_name}_{last_name}_sql_theory_submission.txt` and make sure to include the question number before each answer.
+
 ## 🚀 Submission <a name = "submission"></a>
 
-To submit your solutions, send over the `{first_name}_{last_name}_sql_exercise_submission.sql` file as a DM in Slack to **@Nathan Jones**.
+To submit your solutions, send over the `{first_name}_{last_name}_sql_exercise_submission.sql` file and the `{first_name}_{last_name}_sql_theory_submission.txt` file as a DM in Slack to **@Nathan Jones**.
 
 If you have any questions or need help with the assignment, please reach out in the `#summer-2024-data-internship` channel on Slack.
 
 Good luck! 🚀
 
 ## 🏋️ Exercises <a name = "exercises"></a>
+
+### Theoretical Questions
+
+1. What is a primary key? What is a foreign key? How are they different?
+
+2. What is the difference between the order of execution of the clauses in a SQL query and the order of appearance of the clauses in a SQL query? (`SELECT`, `FROM`, `WHERE`, `GROUP BY`, `ORDER BY`)
+
+3. Briefly explain what a `LEFT JOIN` is, a `RIGHT JOIN` is, and an `INNER JOIN` is. Match each of these join types with the correct Venn diagram representation below.
+
+![SQLVD](./readme_images/sql-join-venn-diagrams.png)
+
+4. What is a "one-to-many" relationship?
+
+5. Your friend Nathan is telling you that he joined the `orders` onto the `drivers` table using each table's `driver_id` column. Nathan can't figure out why he is seeing multiple entries for the same driver in his result set. How would you explain the issue to Nathan?
+
+### Coding Exercises
 
 **Note**: The *Expected Output* for exercises without a sorting will not match your output exactly (which is fine). The expected output is just a sample of what the output should look like. The *Expected Output* for exercises with sorting will match your output exactly.
 
@@ -226,12 +244,4 @@ Expected Output:
 
 Here is the Entity Relationship Diagram (ERD) for the practice database. You can use this to understand the relationships between the tables and it will help you write your queries.
 
-![ERD](./curri-practice-db.png)
-
-## 📝 TODO
-- [ ] Add exercises to the README
-  - Theoretical Questions
-  - SQL Exercises
-- [ ] Add more data to the practice database
-- [ ] Add an ERD for the practice database
-- [ ] Add `head()` of expected output for each exercise's solution
+![ERD](./readme_images/curri-practice-db.png)
