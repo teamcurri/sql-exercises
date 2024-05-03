@@ -140,7 +140,7 @@ Good luck! 🚀
 
 2. What is the difference between the order of execution of the clauses in a SQL query and the order of appearance of the clauses in a SQL query? (`SELECT`, `FROM`, `WHERE`, `GROUP BY`, `ORDER BY`)
 
-3. Briefly explain what a `LEFT JOIN` is, a `RIGHT JOIN` is, and an `INNER JOIN` is. Match each of these join types with the correct Venn diagram representation below.
+3. Briefly explain what a `LEFT JOIN` is, a `RIGHT JOIN` is, and an `INNER JOIN` is. Match each of these join types with the correct Venn diagram representation below. (For example, "Join scenario A is an example of a `_____ JOIN`")
 
 ![SQLVD](./readme_images/sql-join-venn-diagrams.png)
 
