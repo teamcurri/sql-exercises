@@ -212,11 +212,11 @@ Good luck! 🚀
 
 |   driver_id | name            |   order_count |
 |------------:|:----------------|--------------:|
-|          23 | John Pierce     |           609 |
-|          11 | Amy Underwood   |           557 |
-|          24 | Melissa Marquez |           614 |
-|           8 | Jamie Chavez    |           594 |
-|          19 | Ashley Garrett  |           627 |
+|          23 | John Pierce     |           636 |
+|          24 | Melissa Marquez |             0 |
+|           8 | Jamie Chavez    |           650 |
+|          11 | Amy Underwood   |           593 |
+|          19 | Ashley Garrett  |           654 |
 | ...         | ...             |           ... |
 
 **Question 6.** Calculate the average time to complete a delivery (in hours) for orders that have been delivered. Name the column `average_delivery_hours`.
