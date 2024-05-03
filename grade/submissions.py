@@ -1,5 +1,6 @@
 import os
 from datetime import datetime
+from io import StringIO
 
 import pandas as pd
 
@@ -16,7 +17,7 @@ def parse_candidate_name(file_path: str) -> str:
         str: The candidate's name in the format "First, Last".
     """
     try:
-        first_name = file_path.split("_")[0].capitalize()
+        first_name = file_path.split("_")[0].replace("submissions/", "").capitalize()
         last_name = file_path.split("_")[1].capitalize()
 
     except IndexError:
@@ -24,7 +25,7 @@ def parse_candidate_name(file_path: str) -> str:
             "Invalid file name format. Please use '{first_name}_{last_name}_sql_exercise_submission.sql'."
         )
 
-    return f"{first_name}, {last_name}"
+    return f"{first_name} {last_name}"
 
 
 def list_files(directory: str) -> list[str]:
@@ -37,7 +38,7 @@ def list_files(directory: str) -> list[str]:
         list[str]: A list of file names in the directory.
     """
     with os.scandir(directory) as entries:
-        return [entry.name for entry in entries if entry.is_file()]
+        return [f"{directory}/{entry.name}" for entry in entries if entry.is_file()]
 
 
 def grade_submission(submission_file, solution_file):
@@ -78,8 +79,12 @@ def grade_submission(submission_file, solution_file):
                 "exercise_number": idx,
                 "candidate_query": c_query,
                 "solution_query": s_query,
-                "candidate_query_output": candidate_result.to_string(),
-                "expected_output": solution_result.to_string(),
+                "candidate_query_output_head": candidate_result.head(5).to_csv(
+                    index=False
+                ),
+                "expected_output_head": solution_result.head(5).to_csv(index=False),
+                "candidate_query_output": candidate_result.to_csv(index=False),
+                "expected_output": solution_result.to_csv(index=False),
                 "result_match": candidate_result.equals(solution_result),
             }
             results.append(result)
@@ -89,6 +94,8 @@ def grade_submission(submission_file, solution_file):
                     "exercise_number": idx,
                     "candidate_query": c_query,
                     "solution_query": s_query,
+                    "candidate_query_output_head": "Error",
+                    "expected_output_head": "Error",
                     "candidate_query_output": "Error",
                     "expected_output": "Error",
                     "result_match": str(e),
@@ -111,10 +118,32 @@ def grade_and_save_submission(submission_file: str, solution_file: str) -> None:
 
     graded_submission = grade_submission(submission_file, solution_file)
 
-    # Change the file path to csv and include the current timestamp with underscores as separators
-    now = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
-    file_id = submission_file.replace("submission.sql", f"results_{now}.csv")
-    graded_submission_path = f"./graded_submissions/{file_id}"
+    try:
+        # Change the file path to csv and include the current timestamp with underscores as separators
+        now = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
+        file_id = submission_file.replace("submissions/", "").replace(
+            "submission.sql", f"results_{now}.csv"
+        )
+        graded_submission_path = f"./graded_submissions/{file_id}"
 
-    # Write the results to a CSV file inside of the "submissions" folder
-    graded_submission.to_csv(graded_submission_path, index=False)
+        # Write the results to a CSV file inside of the "submissions" folder
+        graded_submission.to_csv(graded_submission_path, index=False)
+
+        print(f"Finished grading {parse_candidate_name(submission_file)}'s submission.")
+
+    except Exception as e:
+        print(f"An error occurred while saving the graded submission: {e}")
+        return
+
+
+# Function to convert a string back to a DataFrame
+def string_to_df(data_string: str) -> pd.DataFrame:
+    """Convert a string representation of a DataFrame to a DataFrame.
+
+    Args:
+        data_string (str): The string representation of a DataFrame.
+
+    Returns:
+        pd.DataFrame: The DataFrame
+    """
+    return pd.read_csv(StringIO(data_string))
