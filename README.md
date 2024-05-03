@@ -27,10 +27,10 @@
 
 This repository contains a take home assignment of SQL exercises for summer 2024 internship candidates. The assignment is divided into 2 parts:
 
-1. SQL Exercises -- Write SQL queries to solve the exercises
-2. SQL Theory -- Short answer theoretical questions about SQL and databases
+1. SQL Theory -- Short answer theoretical questions about SQL and databases
+2. SQL Exercises -- Write SQL queries to solve the exercises
 
-The exercises are designed to test the candidate's SQL knowledge and problem solving skills. The candidate is expected to solve the exercises and submit the solutions in a SQL file.
+The exercises are designed to test the candidate's SQL knowledge and problem solving skills. The candidate is expected to solve the exercises and submit the solutions in a text file and a SQL file.
 
 ## ❗ Prerequisites <a name = "prerequisites"></a>
 
@@ -87,6 +87,8 @@ Run the following command to start the database:
 docker-compose up -d
 ```
 
+This might take a few minutes to create and populate the database.
+
 ### Step 4: Connect to the Database
 Open DBeaver (or another SQL client of your choice) and connect to the database using the following credentials:
 
@@ -116,103 +118,130 @@ https://github.com/teamcurri/sql-exercises/assets/62448274/a29a4cfc-b216-4b55-98
 
 ### Step 6: Complete the Exercises
 
-Write out all of your SQL queries in a single file called `{first_name}_{last_name}_sql_exercise_submission.sql`. You can use DBeaver or another SQL client to write and execute/test your queries.
+For the coding exercises, write out all of your SQL queries in a single file called `{first_name}_{last_name}_sql_exercise_submission.sql`. You can use DBeaver or another SQL client to write and execute/test your queries.
 
 Please make sure to include a semi-colon `;` at the end of each query.
 
+For the short answer questions, write out your answers in a text file called `{first_name}_{last_name}_sql_theory_submission.txt` and make sure to include the question number before each answer.
+
 ## 🚀 Submission <a name = "submission"></a>
 
-To submit your solutions, send over the `{first_name}_{last_name}_sql_exercise_submission.sql` file as a DM in Slack to **@Nathan Jones**.
+To submit your solutions, send over the `{first_name}_{last_name}_sql_exercise_submission.sql` file and the `{first_name}_{last_name}_sql_theory_submission.txt` file as a DM in Slack to **@Nathan Jones**.
 
-If you have any questions or need help with the assignment, please reach out in the `#summer-2024-data-internship` channel on Slack.
+If you have any questions or need help with the assignment, please reach out in Slack.
 
 Good luck! 🚀
 
 ## 🏋️ Exercises <a name = "exercises"></a>
 
-Question 1. List all orders with their associated product names.
+### Theoretical Questions
 
-Expected Output:
+1. What is a primary key? What is a foreign key? How are they different?
 
-| order_id     | ordered_at   | name | quantity | status |
-| ------------ | ------------ | ---- | -------- | ------ |
-| Content Cell | Content Cell |      |          |        |
-| Content Cell | Content Cell |      |          |        |
-| ...          | ...          |      |          |        |
+2. What is the difference between the order of execution of the clauses in a SQL query and the order of appearance of the clauses in a SQL query? (`SELECT`, `FROM`, `WHERE`, `GROUP BY`, `ORDER BY`)
 
-Question 2. Find the total number of orders for each user.
+3. Briefly explain what a `LEFT JOIN` is, a `RIGHT JOIN` is, and an `INNER JOIN` is. Match each of these join types with the correct Venn diagram representation below.
 
-Expected Output:
+![SQLVD](./readme_images/sql-join-venn-diagrams.png)
 
-| First Header | Second Header |
-| ------------ | ------------- |
-| Content Cell | Content Cell  |
-| Content Cell | Content Cell  |
-| ...          | ...           |
+4. What is a "one-to-many" relationship?
+
+5. Your friend Nathan is telling you that he joined the `orders` onto the `drivers` table using each table's `driver_id` column. Nathan can't figure out why he is seeing multiple entries for the same driver in his result set. How would you explain the issue to Nathan?
+
+### Coding Exercises
+
+**Note**: The *Expected Output* for exercises without a sorting will not match your output exactly (which is fine). The expected output is just a sample of what the output should look like. The *Expected Output* for exercises with sorting will match your output exactly.
+
+**Question 1.** List all orders with their associated id, order times, product names, quantities, and order statuses. Sort the list so the oldest orders appear first.
+
+**Expected Output:**
+
+|   order_id | ordered_at                       | name           |   quantity | status    |
+|-----------:|:---------------------------------|:---------------|-----------:|:----------|
+|      12915 | 2024-01-01 00:01:41.337870+00:00 | Burrito        |          5 | Delivered |
+|       9650 | 2024-01-01 00:06:21.770494+00:00 | Sandwich       |          4 | Pending   |
+|       8149 | 2024-01-01 00:15:14.710452+00:00 | Fish and Chips |          2 | Delivered |
+|       4191 | 2024-01-01 00:16:27.213067+00:00 | Tacos          |          2 | Delivered |
+|      14314 | 2024-01-01 00:16:33.258738+00:00 | Curry          |          4 | Delivered |
+| ...        | ...                              | ...            |        ... | ...       |
+
+**Question 2.** Find the total number of orders for each user that has placed an order. Include the user's id, name, and the total number of orders. Sort the results by the user's with the most orders. Name the columns `user_id`, `user_name`, and `total_orders`.
+
+**Expected Output:**
+
+|   user_id | user_name      |   total_orders |
+|----------:|:---------------|---------------:|
+|       146 | Jennifer Price |             95 |
+|        88 | Tracey Reilly  |             95 |
+|       110 | Jaime Brown    |             94 |
+|       177 | Hector Paul    |             92 |
+|        35 | Samuel Warren  |             90 |
+| ...       | ...            |            ... |
 
 
-Question 3. Calculate the revenue generated by each product and order the results by the product's with the highest total revenue.
+**Question 3.** Calculate the total revenue generated by each product, sorted by revenue. Name the columns `product_name` and `total_revenue`.
 
-Expected Output:
+**Expected Output:**
 
-| First Header | Second Header |
-| ------------ | ------------- |
-| Content Cell | Content Cell  |
-| Content Cell | Content Cell  |
-| ...          | ...           |
+| product_name | total_revenue |
+| :----------- | ------------: |
+| Curry        |        115757 |
+| Burger       |       89901.4 |
+| Sandwich     |       41275.4 |
+| Burrito      |       39769.9 |
+| Tacos        |       33548.2 |
+| ...          |           ... |
 
 
-Question 4. Identify drivers who have not completed any deliveries (i.e., none of their Orders were `Delivered`).
+**Question 4.** List All Products with Latest Delivery Date or Default Message. Name the columns `product_name` and `latest_delivery_date`.
 
-Expected Output:
+**Expected Output:**
 
-| First Header | Second Header |
-| ------------ | ------------- |
-| Content Cell | Content Cell  |
-| Content Cell | Content Cell  |
-| ...          | ...           |
+| product_name   | latest_delivery_date             |
+|:---------------|:---------------------------------|
+| Burger         | 2024-05-04 13:29:38.210522+00:00 |
+| Vegan Bowl     | 2024-05-04 09:14:12.184154+00:00 |
+| Curry          | 2024-05-04 13:12:49.369799+00:00 |
+| Burrito        | 2024-05-04 00:01:35.217110+00:00 |
+| Pasta          | 2024-05-04 05:21:51.304887+00:00 |
+| ...            | ...                              |
 
-Question 5. List users along with the last product they ordered, including the order time.
+**Question 5.** Find the number of orders each driver has been assigned to. If there are drivers that have not been assigned to a delivery, make sure they show up and have 0 for their order count. Name the columns `driver_id`, `name`, and `order_count`.
 
-Expected Output:
+**Expected Output:**
 
-| First Header | Second Header |
-| ------------ | ------------- |
-| Content Cell | Content Cell  |
-| Content Cell | Content Cell  |
-| ...          | ...           |
+|   driver_id | name            |   order_count |
+|------------:|:----------------|--------------:|
+|          23 | John Pierce     |           636 |
+|          24 | Melissa Marquez |             0 |
+|           8 | Jamie Chavez    |           650 |
+|          11 | Amy Underwood   |           593 |
+|          19 | Ashley Garrett  |           654 |
+| ...         | ...             |           ... |
 
-Question 6. Calculate the average delivery time (in hours) for orders that have been delivered.
+**Question 6.** Calculate the average time to complete a delivery (in hours) for orders that have been delivered. Name the column `average_delivery_hours`.
 
-Expected Output:
+**Expected Output:**
 
-| First Header | Second Header |
-| ------------ | ------------- |
-| Content Cell | Content Cell  |
-| Content Cell | Content Cell  |
-| ...          | ...           |
+|   average_delivery_hours |
+|-------------------------:|
+|                  12.4987 |
 
-Question 7. Show the total orders and total pending orders for each city where drivers are based.
+**Question 7.** Show the total orders and total pending orders for each city where drivers are based.
 
-Expected Output:
+**Expected Output:**
 
-| First Header | Second Header |
-| ------------ | ------------- |
-| Content Cell | Content Cell  |
-| Content Cell | Content Cell  |
-| ...          | ...           |
+| address_city   |   total_orders |   pending_orders |
+|:---------------|---------------:|-----------------:|
+| Riceside       |            589 |               35 |
+| Lake Curtis    |            621 |               32 |
+| Lake Mark      |            578 |               28 |
+| Traciebury     |            617 |               29 |
+| East Nathaniel |            627 |               23 |
 
 
 ## 🗂️ ERD <a name = "erd"></a>
 
 Here is the Entity Relationship Diagram (ERD) for the practice database. You can use this to understand the relationships between the tables and it will help you write your queries.
 
-![ERD](./curri-practice-db.png)
-
-## 📝 TODO
-- [ ] Add exercises to the README
-  - Theoretical Questions
-  - SQL Exercises
-- [ ] Add more data to the practice database
-- [ ] Add an ERD for the practice database
-- [ ] Add `head()` of expected output for each exercise's solution
+![ERD](./readme_images/curri-practice-db.png)

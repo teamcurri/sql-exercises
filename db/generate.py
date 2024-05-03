@@ -3,6 +3,7 @@ from datetime import timedelta
 
 import pandas as pd
 from faker import Faker
+from utils import fixed_date_time_this_year
 
 # Initialize Faker
 fake = Faker()
@@ -54,7 +55,7 @@ def generate_product_data(num_products: int) -> pd.DataFrame:
     products = [
         (
             fake.random_element(elements=PRODUCT_NAME_LIST),
-            round(random.uniform(2, 20), 2),
+            round(random.uniform(10, 20), 2),
             round(random.uniform(1, 10), 2),
         )
         for i in range(num_products)
@@ -117,10 +118,12 @@ def generate_order_data(
     orders = []
     for i in range(num_orders):
         user_id = random.randint(1, num_users)
-        driver_id = random.randint(1, num_drivers)
+        driver_id = random.randint(
+            1, num_drivers - 2
+        )  # Leave out the last two drivers to ensure some drivers have no orders
         product_id = random.randint(1, num_products)
         quantity = random.randint(1, 5)  # Assuming 1-5 quantity per order
-        ordered_at = fake.date_time_this_year()
+        ordered_at = fixed_date_time_this_year()
 
         # 95% chance of being delivered
         delivered = random.choices([True, False], weights=[0.95, 0.05])[0]

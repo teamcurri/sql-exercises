@@ -1,4 +1,7 @@
+import random
+
 import pandas as pd
+from faker import Faker
 from generate import (
     generate_driver_data,
     generate_order_data,
@@ -7,6 +10,10 @@ from generate import (
 )
 from sqlalchemy import text
 from utils import init_connection_engine
+
+# Initialize seed for reproducibility
+Faker.seed(42)
+random.seed(42)
 
 # Number of entries to generate
 num_users = 200
