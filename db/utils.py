@@ -19,7 +19,6 @@ def init_connection_engine(dockerized=True) -> Engine:
         else:
             conn_string = f"postgresql://curri@localhost:5432/curri-practice-db"
         engine = create_engine(url=conn_string)
-        print("Connected to the database.")
 
     except Exception as e:
         print(f"Error connecting to the database: {e}")

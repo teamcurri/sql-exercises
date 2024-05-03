@@ -105,6 +105,11 @@ def grade_submission(submission_file, solution_file):
     # Convert the list of results to a DataFrame
     results_df = pd.DataFrame(results)
 
+    # Print out the % of exercises that were correct
+    num_correct = results_df["result_match"].sum()
+    total = len(results_df)
+    print(f"Total correct: {num_correct}/{total} ({num_correct/total:.0%})")
+
     return results_df
 
 
