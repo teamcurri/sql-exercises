@@ -55,7 +55,7 @@ def generate_product_data(num_products: int) -> pd.DataFrame:
     products = [
         (
             fake.random_element(elements=PRODUCT_NAME_LIST),
-            round(random.uniform(2, 20), 2),
+            round(random.uniform(10, 20), 2),
             round(random.uniform(1, 10), 2),
         )
         for i in range(num_products)
