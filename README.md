@@ -193,7 +193,7 @@ Good luck! 🚀
 | ...            |           ... |
 
 
-**Question 4.** List All Products with Latest Delivery Date or Default Message. Name the columns `product_name` and `latest_delivery_date`.
+**Question 4.** List all products and their last delivery date. Name the columns `product_name` and `latest_delivery_date`.
 
 **Expected Output:**
 
