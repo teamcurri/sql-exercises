@@ -183,14 +183,14 @@ Good luck! 🚀
 
 **Expected Output:**
 
-| product_name   | total_revenue |
-| :------------- | ------------: |
-| Soup           |        106729 |
-| Mac and Cheese |        105696 |
-| Salad          |       90594.1 |
-| Pancakes       |       68141.7 |
-| Burger         |       66629.8 |
-| ...            |           ... |
+| product_name   |      total_revenue |
+| :------------- | -----------------: |
+| Soup           | 106729.23999999856 |
+| Mac and Cheese | 105695.70000000215 |
+| Salad          |  90594.12000000001 |
+| Pancakes       |  68141.67000000017 |
+| Burger         |  66629.82000000094 |
+| ...            |                ... |
 
 
 **Question 4.** List all products and their last delivery date. Name the columns `product_name` and `latest_delivery_date`.
